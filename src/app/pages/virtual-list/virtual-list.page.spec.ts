@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { VirtualListPage } from './virtual-list.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { DataApiService } from 'src/app/core/services/data/api/data.api.service';
+import { PhotoListApiService } from 'src/app/core/services/photoList/api/photo.list.api.service';
 import { DebugElement } from '@angular/core';
 
 describe('VirtualListPage', () => {
@@ -14,7 +14,7 @@ describe('VirtualListPage', () => {
     TestBed.configureTestingModule({
       declarations: [ VirtualListPage ],
       imports: [IonicModule.forRoot(), SharedModule],
-      providers: [DataApiService]
+      providers: [PhotoListApiService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(VirtualListPage);

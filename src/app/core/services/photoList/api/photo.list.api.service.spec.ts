@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 
 import { PhotoListApiService } from './photo.list.api.service';
+import { Const } from 'src/app/core/config/const/const';
 
 describe('Data.ApiService', () => {
   let service: PhotoListApiService;
@@ -38,6 +39,14 @@ describe('Data.ApiService', () => {
     service.get(page, count).subscribe(
       (values) => {
         expect(values.length).toBeGreaterThan(0);
+      }
+    );
+  });
+
+  it('get All data element', () => {
+    service.getAll().subscribe(
+      (values) => {
+        expect(values.length).toEqual(Const.maxElement);
       }
     );
   });

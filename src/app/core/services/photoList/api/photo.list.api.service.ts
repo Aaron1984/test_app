@@ -18,14 +18,14 @@ export class PhotoListApiService {
     return of(this.generateAll());
   }
 
-  private generateWithPagination(page: number, count: number){
+  private generateWithPagination(page?: number, count?: number){
     let resp = new Array<ItemPhoto>();
     let max: number; // Máximo de elementos en la página
     let index: number;
 
     // Valores por defecto, se pueden parametrizar
-    page = (page === null || page < 1) ? Const.page : page;
-    count = (count === null || count < 1) ? Const.count : count;
+    page = (page === null || page === undefined || page < 1) ? Const.page : page;
+    count = (count === null || count === undefined || count < 1) ? Const.count : count;
     
     // Inicializamos el indice de posicionamiento del array
     index = (page-1)*count;
