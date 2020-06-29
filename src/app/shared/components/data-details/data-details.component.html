@@ -1,0 +1,12 @@
+<ion-item *ngIf="dataModel != null">
+  <ion-thumbnail slot="start">
+    <img [src]='dataModel.photo'>
+  </ion-thumbnail>
+  <ion-label>{{dataModel.text}}</ion-label>
+</ion-item>
+<ion-item *ngIf="dataModel == null">
+  <ion-thumbnail slot="start">
+    <img src='https://www.freeiconspng.com/uploads/error-icon-28.png'>
+  </ion-thumbnail>
+  <ion-label>ERROR CARGANDO CONTENIDO</ion-label>
+</ion-item>

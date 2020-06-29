@@ -1,0 +1,53 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Listado Imagenes
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Listado Imagenes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <ion-searchbar 
+              [(ngModel)]="searchId" 
+              placeholder="ID" 
+              inputmode="numeric" 
+              type="number" 
+              animated ></ion-searchbar>
+          </ion-col>
+          <ion-col size="8">
+            <ion-searchbar [(ngModel)]="searchText" placeholder="Texto" animated></ion-searchbar>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item>
+        <ion-label>Cargar Todos los Datos</ion-label>
+        <ion-checkbox color="primary" checked slot="start" [(ngModel)]="blAll" (ionChange)="ngCheckOnChange()"></ion-checkbox>
+      </ion-item>
+      <ion-virtual-scroll [items]="dataList | filterData: searchId: searchText">
+        <ion-item *virtualItem="let item">
+          <app-data-details [dataModel]="item"></app-data-details>
+        </ion-item>
+      </ion-virtual-scroll>
+    </ion-list>
+    
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>
